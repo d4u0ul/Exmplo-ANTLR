@@ -1,0 +1,8 @@
+NUM=1
+OP1=2
+OP2=3
+APAR=4
+FPAR=5
+SPACES=6
+'('=4
+')'=5
