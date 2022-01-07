@@ -5,12 +5,12 @@ import expr.*;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import java.io.*;
- 
- 
-class Main {
-      
-  public static void printTree(String prefix, ParseTree tree){
-    //imprime a árvore sintática prefix é usado para identação e tree é o nó em si 
+
+ class Main {
+   //Implementação do front-end
+   public static void printTree(String prefix, ParseTree tree){
+      //imprime a árvore sintática prefix é usado para identação e tree é o nó em si 
+
       if(tree instanceof TerminalNode){
         //se o nó for um não-terminal expr,start,soma,prod ... imprima a identação e o nome do nó
         System.out.println(prefix+"'"+tree.getText()+"'");
