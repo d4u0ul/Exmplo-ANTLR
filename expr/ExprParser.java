@@ -158,7 +158,7 @@ public class ExprParser extends Parser {
 			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitGroup(this);
 		}
 	}
-	public static class MultContext extends ExprContext {
+	public static class OpContext extends ExprContext {
 		public List<ExprContext> expr() {
 			return getRuleContexts(ExprContext.class);
 		}
@@ -166,14 +166,15 @@ public class ExprParser extends Parser {
 			return getRuleContext(ExprContext.class,i);
 		}
 		public TerminalNode OP2() { return getToken(ExprParser.OP2, 0); }
-		public MultContext(ExprContext ctx) { copyFrom(ctx); }
+		public TerminalNode OP1() { return getToken(ExprParser.OP1, 0); }
+		public OpContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterMult(this);
+			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterOp(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitMult(this);
+			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitOp(this);
 		}
 	}
 	public static class ConstContext extends ExprContext {
@@ -186,24 +187,6 @@ public class ExprParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitConst(this);
-		}
-	}
-	public static class SomaContext extends ExprContext {
-		public List<ExprContext> expr() {
-			return getRuleContexts(ExprContext.class);
-		}
-		public ExprContext expr(int i) {
-			return getRuleContext(ExprContext.class,i);
-		}
-		public TerminalNode OP1() { return getToken(ExprParser.OP1, 0); }
-		public SomaContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterSoma(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitSoma(this);
 		}
 	}
 
@@ -265,7 +248,7 @@ public class ExprParser extends Parser {
 					switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 					case 1:
 						{
-						_localctx = new MultContext(new ExprContext(_parentctx, _parentState));
+						_localctx = new OpContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(15);
 						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
@@ -277,7 +260,7 @@ public class ExprParser extends Parser {
 						break;
 					case 2:
 						{
-						_localctx = new SomaContext(new ExprContext(_parentctx, _parentState));
+						_localctx = new OpContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(18);
 						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");

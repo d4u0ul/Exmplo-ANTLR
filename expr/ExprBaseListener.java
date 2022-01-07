@@ -40,13 +40,13 @@ public class ExprBaseListener implements ExprListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMult(ExprParser.MultContext ctx) { }
+	@Override public void enterOp(ExprParser.OpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMult(ExprParser.MultContext ctx) { }
+	@Override public void exitOp(ExprParser.OpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -59,18 +59,6 @@ public class ExprBaseListener implements ExprListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitConst(ExprParser.ConstContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterSoma(ExprParser.SomaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitSoma(ExprParser.SomaContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

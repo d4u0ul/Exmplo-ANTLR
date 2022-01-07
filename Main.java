@@ -47,31 +47,23 @@ class Main {
         ParseTree exp  = tree.getChild(1);
         return avalie(exp);
       }
-      case "Soma":{
-        //neste caso temos uma árvore com 3 filhos o primeiro número, a operação desejada e o segundo número
+      case "Op":{
+        //neste caso temos uma árvore com 3 filhos o primeiro número, a operação desejada e o segundo número, mas agora com todo mundo junto +-*/
         ParseTree esq = tree.getChild(0);
         String op  = tree.getChild(1).getText();
         ParseTree dir = tree.getChild(2);
-        //não é preciso verificar se temos relamente 3 filhos, pois o front-end já o fez permitindo apenas "Soma" com 3 filhos
+        //não é preciso verificar se temos relamente 3 filhos, pois o front-end já o fez permitindo apenas "Op" com 3 filhos
         if (op.equals("+")){
           return avalie(esq) + avalie(dir);
         }
-        //não precisamos verifica se a outra op é o outro tipo, pois o front0end já verificou que a árvore Soma só pode ter + | -
-        else{
+        //não precisamos verifica se a outra op é o outro tipo, pois o front-end já verificou que a árvore Soma só pode ter + | - | * | /
+        else if (op.equals("-")){
           return avalie(esq) - avalie(dir);
         }
-      }
-      case "Mult":{
-        //neste caso temos uma árvore com 3 filhos o primeiro número, a operação desejada e o segundo número
-        ParseTree esq = tree.getChild(0);
-        String op  = tree.getChild(1).getText();
-        ParseTree dir = tree.getChild(2);
-        //não é preciso verificar se temos relamente 3 filhos, pois o front-end já o fez permitindo apenas "Soma" com 3 filhos
-        if (op.equals("*")){
+        else if (op.equals("*")){
           return avalie(esq) * avalie(dir);
         }
-        //não precisamos verifica se a outra op é o outro tipo, pois o front-end já verificou que a árvore Mult só pode ter * | /
-        else{
+        else {
           return avalie(esq) / avalie(dir);
         }
       }
