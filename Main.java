@@ -8,6 +8,7 @@ O antlr pega a descrição de uma linguagem sintatica+lexica e gera um analisado
  
  
  class Main {
+   //Implementação do front-end
    public static void printTree(String prefix, ParseTree tree){
       //imprime a árvore sintática prefix é usado para identação e tree é o nó em si 
       if(tree instanceof TerminalNode){
