@@ -30,17 +30,17 @@ public interface ExprListener extends ParseTreeListener {
 	 */
 	void exitGroup(ExprParser.GroupContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Mult}
+	 * Enter a parse tree produced by the {@code Op}
 	 * labeled alternative in {@link ExprParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterMult(ExprParser.MultContext ctx);
+	void enterOp(ExprParser.OpContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Mult}
+	 * Exit a parse tree produced by the {@code Op}
 	 * labeled alternative in {@link ExprParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitMult(ExprParser.MultContext ctx);
+	void exitOp(ExprParser.OpContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Const}
 	 * labeled alternative in {@link ExprParser#expr}.
@@ -53,16 +53,4 @@ public interface ExprListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitConst(ExprParser.ConstContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Soma}
-	 * labeled alternative in {@link ExprParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterSoma(ExprParser.SomaContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Soma}
-	 * labeled alternative in {@link ExprParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitSoma(ExprParser.SomaContext ctx);
 }

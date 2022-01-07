@@ -6,8 +6,8 @@ grammar Expr;
 
 start : expr EOF ; 
 
-expr : expr OP2 expr  #Mult
-     | expr OP1 expr  #Soma
+expr : expr OP2 expr  #Op
+     | expr OP1 expr  #Op
      | NUM            #Const
 	 | APAR expr FPAR   #Group
 	 ;
