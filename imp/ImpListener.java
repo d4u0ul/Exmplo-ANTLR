@@ -18,6 +18,40 @@ public interface ImpListener extends ParseTreeListener {
 	 */
 	void exitStart(ImpParser.StartContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link ImpParser#dec}.
+	 * @param ctx the parse tree
+	 */
+	void enterDec(ImpParser.DecContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ImpParser#dec}.
+	 * @param ctx the parse tree
+	 */
+	void exitDec(ImpParser.DecContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Soma1}
+	 * labeled alternative in {@link ImpParser#com}.
+	 * @param ctx the parse tree
+	 */
+	void enterSoma1(ImpParser.Soma1Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Soma1}
+	 * labeled alternative in {@link ImpParser#com}.
+	 * @param ctx the parse tree
+	 */
+	void exitSoma1(ImpParser.Soma1Context ctx);
+	/**
+	 * Enter a parse tree produced by the {@code For}
+	 * labeled alternative in {@link ImpParser#com}.
+	 * @param ctx the parse tree
+	 */
+	void enterFor(ImpParser.ForContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code For}
+	 * labeled alternative in {@link ImpParser#com}.
+	 * @param ctx the parse tree
+	 */
+	void exitFor(ImpParser.ForContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code Atrib}
 	 * labeled alternative in {@link ImpParser#com}.
 	 * @param ctx the parse tree
@@ -113,6 +147,18 @@ public interface ImpListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitVar(ImpParser.VarContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Elvis}
+	 * labeled alternative in {@link ImpParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterElvis(ImpParser.ElvisContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Elvis}
+	 * labeled alternative in {@link ImpParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitElvis(ImpParser.ElvisContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Const}
 	 * labeled alternative in {@link ImpParser#expr}.

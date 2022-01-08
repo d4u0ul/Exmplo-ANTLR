@@ -4,15 +4,21 @@ grammar Imp;
 
 //sintatica Combina os tokens da analise lexica em frases 
 
-start : com* EOF ; 
+start : dec* com* EOF ; 
 
 //comandos são os elementos mais importantes em linguagens de programação. Eles tÊm por objetivo não retornar um valor, mas sim retornar o valor de uma variável. Por exemplo o comando de atribuição tem como estruturas básicas uma variável, um op de atribuição e o ;(separador de comandos).
 
-com : VAR '=' expr ';' #Atrib
+//Declarações
+dec: 'int' VAR '=' expr ';';
+
+com : VAR '++' ';' #Soma1
+    | 'for' VAR '=' NUM 'to' NUM 'do' com #For
+    | VAR '=' expr ';' #Atrib
     | 'escreva' '(' expr ')' ';' #Escreva
     | 'while' '(' expr ')' com  #While
     | '{' com* '}' #ComSeq
     | 'if' '(' expr  ')' com ('else' com)? #IfThenElse
+     
     ;
 
 expr : expr OP2 expr  #Op
@@ -22,12 +28,14 @@ expr : expr OP2 expr  #Op
      | NUM            #Const
      | VAR            #Var 
 	   | APAR expr FPAR #Group
+     | 'Elvis' ':' NUM '?' #Elvis
 	 ;
 
 //LEXICA classifica seq de caracteres em tokes/lexema/simb terminais
 
 //ATRIB : '=' ; como temos um padrão constante '=' é possível definí-lo diretamente na descrição sintática colocando-os entre aspas 
 //PV : ';' ;
+
 VAR : [a-z]+ ;
 NUM : '-'?[0-9]+ ;
 OP1 : '+' | '-' ;

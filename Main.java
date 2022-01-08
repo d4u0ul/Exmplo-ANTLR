@@ -97,10 +97,21 @@ import java.io.*;
       System.out.println("entrada valida");
       //System.out.println("árvore ->"+tree);
       //System.out.println("Código Fonte ->"+tree.getText());
-      System.out.println("Num de filhos ->"+tree.getChildCount());
-      printTree("",tree);
+      //System.out.println("Num de filhos ->"+tree.getChildCount());
+      //printTree("",tree);
+      AnalisadorSemantico analisador = new AnalisadorSemantico();
+      //analise da semântica do programa antes de executá-lo implementado entre entre a fase sintática e a fase de geração/interpretação de código
+      if (analisador.analise(tree)==false){
+        System.err.println("erros de tipos detectados \n");
+        return;
+      }else{
+        System.out.println("nenhum erro encontrado");
+      }
+
+
       Interpretador inter = new Interpretador();
       inter.avalie(tree);
+      //System.out.println("qtde de filhos ->"+inter.qtdeTotalDeNos(tree));  
       //System.out.println("Calculando o valor da expressão");
       //int v =avalie(tree);
       //System.out.println("valor calculado = "+v );

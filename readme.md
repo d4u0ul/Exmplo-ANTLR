@@ -109,3 +109,28 @@ Usando a DSL podemos, descrever a nossa intenção em um nível mais alto do que
 Chegamos aqui no conceito de ***Programação declarativa*** - O programador pensa mais em o que ele quer que o computador faça e como o computador fará para calcular o que é desejado. Isso é muito mais fácil de ser alcançado quando usamos DSLs.
 
 ***Pior do que escrever um programa é escrever um programa que escreve um programa***
+
+Declaração dinâmica de variáveis
+
+Num programa onde as variáveis são declaradas dinâmicamente erros como o de variáveis não definidas podem aparecer ou não em programas que usem variáveis não definidas.
+Por exemplo:
+
+<div class="highlight">
+<pre class="highlight c">
+<code>if(2<0)
+  escreva(x+3);
+else 
+  escreva(0);
+</code></pre></div>
+
+Perceba que x ainda não foi declarado. Logo, se a primeira condição é falsa o seu comando não é executado e um erro possível de escreva(x+3) nunca ocorre. Então é necessário que a cada passo de iteração o programa verificar se a variável foi ou não definida. Programas que fazem essa checagem em tempo de execução são muito perigosos pois pode-se ter erros latentes no seu programa que só serão descobertos quando o programa já estiver em produção.
+Assim, linguagens como declarações dinâmicas de variaveis permitem um desenvolvimento mais fácil e mais rápido, mas em compensação elas dão menos garantias de que os programas sejam livres de erros.
+Para tornar as liguagens mais seguras em relação a este problema, linguagens mais tradicionais como C, Java, Pascal  incorporam um tipo especial de elemento sintático que são as declarações DEC.
+Uma declaração é um elemento que vem antes dos comandos que serve para indicar que o programa vai utilizar uma variavel. Então, toda vez que o programa for utilizar uma variavel, ele deve declará-la obrigatoriamente ou então o programa é inválido.
+Quando verificamos a declaração da variável quando o comando for executado pode não ser possível identificar um arro até que ele ocorra. Isto pode acontecer depois da primeira execução do programa, assim como pode acontecer depois da milhonésima execução deste programa, o que gera um erro de variavel não declarada latente. 
+Para resolver isso, o compilador adiciona entre a fase sintática e a fase de geração/interpretação de código, uma outra fase que é a da análise semantica do programa, onde deve-se caminhar por todo o código verificando quais foram as variáveis que foram declaradas e quais são as que estão sendo utilizadas em todos os comandos do programa não importando se este foi ou não executado.
+Assim, antes de executar a primeira linha do programa, é preciso se fazer essa anpalise semântica para garantir que no meu programa eu não tenha nenhum erro como este de variável não declarada.
+Está análise será feita pela classe analisador semântico que tem uma estrutura parecida com a do interpretador, mas em vez de executar o código, nós queremos saber quais variáveis foram declaradas e se o program utiliza apenas as variáveis que foram declaradas.
+
+
+   
