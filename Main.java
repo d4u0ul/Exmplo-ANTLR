@@ -24,55 +24,55 @@ import java.io.*;
       }
   }
   
-  public static int avalie(ParseTree tree){
-    //Inicio de implementação do back-end que caminha pela árvore sintática e realiza alguns tipos de procedimentos pre=definidos de acordo com cada tipo de nó encontrado
-    //caminha pela estrutura da árvore e calcula o valor dela 
-    //primeiro deve-se saber o tipo da árvore (terminal|não-terminal)
-    String className = tree.getClass().getSimpleName().replace("Context",""); //busca o nome da classe e retira Contex do nome
-    //OBS- o código que faz a avaliação de uma linguagem formal é um código orientado à sintaxe, pois geralmente o que ele faz é fazer um switch de acordo com o tipo do nó e executar alguma coisa em função do tipo dos nós da linguagem(start,expr,soma...)
-    switch (className){
-      case "Start":{
-        //neste nó temos uma árvore que representa uma expressão seguido do eof
-        ParseTree exp = tree.getChild(0);
-        return avalie(exp);
-      }
-      case "Const":{
-        //Neste caso temos apenas um filho que é um dígito de 0-9 com um ou mais casos ex: 0, 2, 4 , 12312312, 9034834975938
-        String num = tree.getText();
-        //retorna a conversão em int do número escrito em String
-        return Integer.parseInt(num);
-      } 
-      case "Group":{
-        // Neste caso, a árgore tem 3 nós: 1 AbreParenteses, 1 expressão e 1 FechaParenteses
-        ParseTree exp  = tree.getChild(1);
-        return avalie(exp);
-      }
-      case "Op":{
-        //neste caso temos uma árvore com 3 filhos o primeiro número, a operação desejada e o segundo número, mas agora com todo mundo junto +-*/
-        ParseTree esq = tree.getChild(0);
-        String op  = tree.getChild(1).getText();
-        ParseTree dir = tree.getChild(2);
-        //não é preciso verificar se temos relamente 3 filhos, pois o front-end já o fez permitindo apenas "Op" com 3 filhos
-        if (op.equals("+")){
-          return avalie(esq) + avalie(dir);
-        }
-        //não precisamos verifica se a outra op é o outro tipo, pois o front-end já verificou que a árvore Soma só pode ter + | - | * | /
-        else if (op.equals("-")){
-          return avalie(esq) - avalie(dir);
-        }
-        else if (op.equals("*")){
-          return avalie(esq) * avalie(dir);
-        }
-        else {
-          return avalie(esq) / avalie(dir);
-        }
-      }
-      default:
-        throw new RuntimeException("não sei avaliar "+ tree.getText());
-    }
-
-  }
-
+  //public static int avalie(ParseTree tree){
+  //  //Inicio de implementação do back-end que caminha pela árvore //sintática e realiza alguns tipos de procedimentos //pre=definidos de acordo com cada tipo de nó encontrado
+  //  //caminha pela estrutura da árvore e calcula o valor dela 
+  //  //primeiro deve-se saber o tipo da árvore (terminal|//não-terminal)
+  //  String className = tree.getClass().getSimpleName().replace//("Context",""); //busca o nome da classe e retira Contex do //nome
+  //  //OBS- o código que faz a avaliação de uma linguagem formal é //um código orientado à sintaxe, pois geralmente o que ele faz //é fazer um switch de acordo com o tipo do nó e executar //alguma coisa em função do tipo dos nós da linguagem(start,//expr,soma...)
+  //  switch (className){
+  //    case "Start":{
+  //      //neste nó temos uma árvore que representa uma expressão //seguido do eof
+  //      ParseTree exp = tree.getChild(0);
+  //      return avalie(exp);
+  //    }
+  //    case "Const":{
+  //      //Neste caso temos apenas um filho que é um dígito de 0-9 //com um ou mais casos ex: 0, 2, 4 , 12312312, 9034834975938
+  //      String num = tree.getText();
+  //      //retorna a conversão em int do número escrito em String
+  //      return Integer.parseInt(num);
+  //    } 
+  //    case "Group":{
+  //      // Neste caso, a árgore tem 3 nós: 1 AbreParenteses, 1 //expressão e 1 FechaParenteses
+  //      ParseTree exp  = tree.getChild(1);
+  //      return avalie(exp);
+  //    }
+  //    case "Op":{
+  //      //neste caso temos uma árvore com 3 filhos o primeiro //número, a operação desejada e o segundo número, mas agora //com todo mundo junto +-*/
+  //      ParseTree esq = tree.getChild(0);
+  //      String op  = tree.getChild(1).getText();
+  //      ParseTree dir = tree.getChild(2);
+  //      //não é preciso verificar se temos relamente 3 filhos, //pois o front-end já o fez permitindo apenas "Op" com 3 //filhos
+  //      if (op.equals("+")){
+  //        return avalie(esq) + avalie(dir);
+  //      }
+  //      //não precisamos verifica se a outra op é o outro tipo, //pois o front-end já verificou que a árvore Soma só pode //ter + | - | * | /
+  //      else if (op.equals("-")){
+  //        return avalie(esq) - avalie(dir);
+  //      }
+  //      else if (op.equals("*")){
+  //        return avalie(esq) * avalie(dir);
+  //      }
+  //      else {
+  //        return avalie(esq) / avalie(dir);
+  //      }
+  //    }
+  //    default:
+  //      throw new RuntimeException("não sei avaliar "+ //tree.getText());
+  //  }
+//
+  //}
+//
   public static void main(String[] args) throws IOException {
     
     System.out.println("Executando o reconhecedor!");
@@ -95,10 +95,9 @@ import java.io.*;
     }
     else
       System.out.println("entrada valida");
-      //System.out.println("árvore ->"+tree);
-      //System.out.println("Código Fonte ->"+tree.getText());
-      //System.out.println("Num de filhos ->"+tree.getChildCount());
-      //printTree("",tree);
+      System.out.println("Código Fonte ->"+tree.getText());
+      System.out.println("Num de filhos ->"+tree.getChildCount());
+      printTree("",tree);
       AnalisadorSemantico analisador = new AnalisadorSemantico();
       //analise da semântica do programa antes de executá-lo implementado entre entre a fase sintática e a fase de geração/interpretação de código
       if (analisador.analise(tree)==false){
@@ -107,13 +106,8 @@ import java.io.*;
       }else{
         System.out.println("nenhum erro encontrado");
       }
-
-
+      //Passado o analisador semântico, inicializa-se a interpretação do programa
       Interpretador inter = new Interpretador();
       inter.avalie(tree);
-      //System.out.println("qtde de filhos ->"+inter.qtdeTotalDeNos(tree));  
-      //System.out.println("Calculando o valor da expressão");
-      //int v =avalie(tree);
-      //System.out.println("valor calculado = "+v );
   }
 }

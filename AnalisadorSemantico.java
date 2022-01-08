@@ -95,6 +95,11 @@ class AnalisadorSemantico{
         }
         return true;
       }
+      case "Elvis":{
+        //'Elvis' ':' VAR '?' #Elvis
+        //O único erro que poderia dar seria em VAR que na análise léxica já se descobre se é ou não um número
+        return true;
+      }
     default:{
         System.err.println("não sei analisar o nó do tipo: "+tipo );
         return true;

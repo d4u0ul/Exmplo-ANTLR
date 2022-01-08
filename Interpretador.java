@@ -70,7 +70,7 @@ class Interpretador{
         String nomeVar = t.getChild(1).getText();
         Integer valor1 = Integer.parseInt(t.getChild(3).getText());
         Integer valor2 = Integer.parseInt(t.getChild(5).getText());
-        if (valor1>valor2) System.err.printf("ERROR: Valor1 %s menor do que o Valor2 %s \n",valor1,valor2);
+        if (valor1>valor2) System.err.printf("ERROR de parâmetros do For:  \nValor1 %s menor do que o Valor2 %s \nfor x = Valor1 to Valor2 do{comandos;} \n",valor1,valor2);
         ParseTree comRep = t.getChild(7);
         for (int c=valor1;c<valor2;c++){
           avalie(comRep);

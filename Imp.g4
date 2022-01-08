@@ -6,10 +6,10 @@ grammar Imp;
 
 start : dec* com* EOF ; 
 
-//comandos são os elementos mais importantes em linguagens de programação. Eles tÊm por objetivo não retornar um valor, mas sim retornar o valor de uma variável. Por exemplo o comando de atribuição tem como estruturas básicas uma variável, um op de atribuição e o ;(separador de comandos).
-
 //Declarações
 dec: 'int' VAR '=' expr ';';
+
+//comandos são os elementos mais importantes em linguagens de programação. Eles tÊm por objetivo não retornar um valor, mas sim modificar o valor de uma variável. Por exemplo o comando de atribuição tem como estruturas básicas uma variável, um op de atribuição e o ;(separador de comandos).
 
 com : VAR '++' ';' #Soma1
     | 'for' VAR '=' NUM 'to' NUM 'do' com #For
