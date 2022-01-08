@@ -23,7 +23,7 @@ import java.io.*;
         printTree(prefix + "|   " , tree.getChild(c));
       }
   }
-
+  
   public static int avalie(ParseTree tree){
     //Inicio de implementação do back-end que caminha pela árvore sintática e realiza alguns tipos de procedimentos pre=definidos de acordo com cada tipo de nó encontrado
     //caminha pela estrutura da árvore e calcula o valor dela 
@@ -94,11 +94,13 @@ import java.io.*;
       return;
     }
     else
-      //System.out.println("entrada valida");
+      System.out.println("entrada valida");
       //System.out.println("árvore ->"+tree);
       //System.out.println("Código Fonte ->"+tree.getText());
       System.out.println("Num de filhos ->"+tree.getChildCount());
       printTree("",tree);
+      Interpretador inter = new Interpretador();
+      inter.avalie(tree);
       //System.out.println("Calculando o valor da expressão");
       //int v =avalie(tree);
       //System.out.println("valor calculado = "+v );

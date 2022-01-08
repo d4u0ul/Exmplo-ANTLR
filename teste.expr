@@ -1,16 +1,30 @@
-while (x > 0 ){
-  x = 0 ;
+escreva(2+(5*4));
+escreva(3*2);
+escreva(10>1);
+escreva(10==1);
+a=2;
+x = 5+2;
+escreva(x);
+x=x+1;
+escreva(x);
+y=3;
+x=x+y;
+escreva(x);
+x=0;
+soma = 0;
+escreva(x);
+while (x<10) {
+  soma = soma + x;
+  x=x+1;
+  escreva(x);
+  escreva(soma);
 }
-y = ( z + 1 ) ;
-escreva ( w ) ;
-
-if ( x > 10 )
-  x = 0 ;
-if ( x > 10 )
-  x = 0 ;
-else
-  y=20;
-
-
-
+escreva(x);
+escreva(soma);
+if(x>10){
+  escreva(x);
+}
+else{
+  escreva(x+1);
+}
 
