@@ -1,0 +1,35 @@
+int x = 1;
+int y = 2;
+int soma = 1;
+int a = 1;
+escreva(x);
+
+escreva(2+(5*4));
+escreva(3*2);
+escreva(10>1);
+escreva(10==1);
+
+x = 5+2;
+escreva(x);
+x=x+1;
+escreva(x);
+y=3;
+x=x+y;
+escreva(x);
+x=0;
+escreva(x);
+while (x<10) {
+  soma = soma + x;
+  x=x+1;
+  escreva(x);
+  escreva(soma);
+}
+escreva(x);
+escreva(soma);
+if(x>10){
+  escreva(x);
+}
+else{
+  escreva(x+1);
+}
+
