@@ -171,4 +171,40 @@ public interface ImpListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitConst(ImpParser.ConstContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code CTrue}
+	 * labeled alternative in {@link ImpParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterCTrue(ImpParser.CTrueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code CTrue}
+	 * labeled alternative in {@link ImpParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitCTrue(ImpParser.CTrueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code CFalse}
+	 * labeled alternative in {@link ImpParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterCFalse(ImpParser.CFalseContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code CFalse}
+	 * labeled alternative in {@link ImpParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitCFalse(ImpParser.CFalseContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code CString}
+	 * labeled alternative in {@link ImpParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterCString(ImpParser.CStringContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code CString}
+	 * labeled alternative in {@link ImpParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitCString(ImpParser.CStringContext ctx);
 }

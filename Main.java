@@ -95,19 +95,29 @@ import java.io.*;
     }
     else
       System.out.println("entrada valida");
-      System.out.println("Código Fonte ->"+tree.getText());
-      System.out.println("Num de filhos ->"+tree.getChildCount());
-      printTree("",tree);
+
       AnalisadorSemantico analisador = new AnalisadorSemantico();
-      //analise da semântica do programa antes de executá-lo implementado entre entre a fase sintática e a fase de geração/interpretação de código
-      if (analisador.analise(tree)==false){
+
+     if (analisador.analise(tree)==false){
         System.err.println("erros de tipos detectados \n");
         return;
       }else{
         System.out.println("nenhum erro encontrado");
       }
+
+      //System.out.println("Código Fonte ->"+tree.getText());
+      //System.out.println("Num de filhos ->"+tree.getChildCount());
+      //printTree("",tree);
+      
+
+
+      //analise da semântica do programa antes de executá-lo implementado entre entre a fase sintática e a fase de geração/interpretação de código
+ 
+
+
+
       //Passado o analisador semântico, inicializa-se a interpretação do programa
-      Interpretador inter = new Interpretador();
-      inter.avalie(tree);
+      //Interpretador inter = new Interpretador();
+      //inter.avalie(tree);
   }
 }
